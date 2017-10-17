@@ -1,38 +1,79 @@
 <html>
     <head>
-        <title>OXYCOIN Pool</title>
+        <title>OXYCOIN Official Pool</title>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     	<link href="https://bootswatch.com/flatly/bootstrap.min.css" rel="stylesheet">
+        <link href="main.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,800italic,700italic,600italic,400italic,300italic,800,700,600" rel="stylesheet" type="text/css">
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
         <script src="app.js"></script>
     </head>
     <body ng-app="delegateApp" ng-controller="indexCtrl">
+        <div class="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="text-center">
+                            <img class="oxycoin-logo" src="https://oxycoin.io/img/oxycoin-logo.png" alt="Oxycoin" title="Oxycoin" />
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="text-center">
+                            <span class="title">{{title}}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="text-center">
+                            <a href="https://explorer.oxycoin.io/address/{{delegate.address}}" target="_blank">
+                                <span class="delegate">Delegate: {{delegate.username}}</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="container">
-            <h1>OXYCOIN Pool (<a href="https://explorer.oxycoin.io/address/10328767530084245470X" target="_blank">Explorer</a>)</h1>
-            <div class="alert alert-info" role="alert">Sharing weekly 50% of forged amount to voters; vote for delegate jan to receive a reward in the next week.</div>
+            <hr>
 
             <div class="row">
                 <div class="col-md-4">
-                    <div class="alert alert-success" role="alert">Last payout: {{lastpayout|date}}</div>
+                    <div class="text-center column-text" role="alert">
+                        Rank: <strong>{{delegate.rank}}</strong>
+                    </div>
                 </div>
-                <div class="col-md-8">
-                    <div class="alert alert-success" role="alert">Next payout will be at: {{nextpayout|date}}</div>
+                <div class="col-md-4">
+                    <div class="text-center column-text" role="alert">
+                        Productivity: <strong>{{delegate.productivity}}</strong>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center column-text" role="alert">
+                        Approval: <strong>{{delegate.approval}}</strong>
+                    </div>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-4">
-                    <div class="alert alert-info" role="alert">Rank: {{delegate.rank}}</div>
+                    <div class="text-center column-text" role="alert">
+                        Last payout: <strong>{{lastpayout|date}}</strong>
+                    </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="alert alert-danger" role="alert">Productivity: {{delegate.productivity}}</div>
+                    <div class="text-center column-text" role="alert">
+                        Next payout: <strong>{{nextpayout|date}}</strong>
+                    </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="alert alert-warning" role="alert">Approval: {{delegate.approval}}</div>
+                    <div class="text-center column-text" role="alert">
+                        Sharing: <strong>{{sharing}}% ({{scheduleLong}})</strong>
+                    </div>
                 </div>
             </div>
 
+            <hr>
 
             <table class="table table-striped table-hover table-bordered">
                 <thead>
@@ -51,9 +92,8 @@
             </table>
             
             <hr>
-            <div align="center">
-	            This software is free software created by Davide Gessa<br>
-	            <a href="https://github.com/dakk/lisk-pool">Fork me on Github</a>
+            <div class="footer">
+	            This software is free software created by <a href="https://github.com/dakk/lisk-pool">Davide Gessa</a>
 	        </div>
         </div>
     </body>
